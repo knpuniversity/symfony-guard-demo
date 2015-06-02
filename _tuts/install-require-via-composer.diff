@@ -11,7 +11,7 @@ index f0d8e83..728eaf8 100644
  
          // Some bundles are only used while developing the application or during
 diff --git a/composer.json b/composer.json
-index 8714b12..139f937 100644
+index 8714b12..95d7058 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -23,7 +23,8 @@
@@ -20,12 +20,12 @@ index 8714b12..139f937 100644
          "symfony/symfony"                      : "~2.6",
 -        "twig/extensions"                      : "~1.0"
 +        "twig/extensions"                      : "~1.0",
-+        "knpuniversity/guard-bundle": "0.1@dev"
++        "knpuniversity/guard-bundle": "dev-master"
      },
      "require-dev": {
          "sensio/generator-bundle": "~2.3"
 diff --git a/composer.lock b/composer.lock
-index 450123b..f87e496 100644
+index 450123b..2c8f410 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -1,10 +1,10 @@
@@ -37,7 +37,7 @@ index 450123b..f87e496 100644
          "This file is @generated automatically"
      ],
 -    "hash": "2c03ecec8b213388f91c0dcc391406cb",
-+    "hash": "32c33bf670f9eac2a9f704d3e0c8b8e9",
++    "hash": "5fc85bb4376560bbf8b9031dcff48953",
      "packages": [
          {
              "name": "doctrine/annotations",
@@ -55,16 +55,16 @@ index 450123b..f87e496 100644
          },
          {
 +            "name": "knpuniversity/guard-bundle",
-+            "version": "v0.1",
++            "version": "dev-master",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/knpuniversity/KnpUGuardBundle.git",
-+                "reference": "c469f95d7ecb895fecb20af57fd539fd3d973da5"
++                "reference": "fd142b97ce034abaa3e33aadc589fecdf4b14e27"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/knpuniversity/KnpUGuardBundle/zipball/c469f95d7ecb895fecb20af57fd539fd3d973da5",
-+                "reference": "c469f95d7ecb895fecb20af57fd539fd3d973da5",
++                "url": "https://api.github.com/repos/knpuniversity/KnpUGuardBundle/zipball/fd142b97ce034abaa3e33aadc589fecdf4b14e27",
++                "reference": "fd142b97ce034abaa3e33aadc589fecdf4b14e27",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -93,7 +93,7 @@ index 450123b..f87e496 100644
 +            "keywords": [
 +                "security"
 +            ],
-+            "time": "2015-05-30 22:44:07"
++            "time": "2015-06-02 00:52:14"
 +        },
 +        {
              "name": "kriswallsmith/assetic",
