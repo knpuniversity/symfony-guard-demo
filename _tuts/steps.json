@@ -74,7 +74,17 @@
             "id": "formlogin-rememberme",
             "name": "FormLogin: RememberMe",
             "description": null
+        },
+        {
+            "id": "formlogin-csrf-protection",
+            "name": "FormLogin: CSRF Protection",
+            "description": null
+        },
+        {
+            "id": "formlogin-custom-authentication-errors",
+            "name": "FormLogin: Custom authentication errors",
+            "description": null
         }
     ],
-    "sha": "3f2d78383ab259214d66ede1a7961e7bc8a7c59e"
+    "sha": "1f643453a6b81e98af4a7d095ebb81575885e0f2"
 }

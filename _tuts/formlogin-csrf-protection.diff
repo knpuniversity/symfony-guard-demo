@@ -1,0 +1,59 @@
+diff --git a/app/config/services.yml b/app/config/services.yml
+index 1f4f73e..e6384a0 100644
+--- a/app/config/services.yml
++++ b/app/config/services.yml
+@@ -32,7 +32,7 @@ services:
+ 
+     app.security.form_login_authenticator:
+         class: AppBundle\Security\FormLoginAuthenticator
+-        arguments: ["@security.password_encoder", "@router"]
++        arguments: ["@security.password_encoder", "@router", "@security.csrf.token_manager"]
+ 
+     # Uncomment the following lines to define a service for the Post Doctrine repository.
+     # It's not mandatory to create these services, but if you use repositories a lot,
+diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
+index ea7317d..912010f 100644
+--- a/src/AppBundle/Security/FormLoginAuthenticator.php
++++ b/src/AppBundle/Security/FormLoginAuthenticator.php
+@@ -11,9 +11,12 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+ use Symfony\Component\Security\Core\Exception\AuthenticationException;
+ use Symfony\Component\Security\Core\Exception\BadCredentialsException;
++use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
+ use Symfony\Component\Security\Core\Security;
+ use Symfony\Component\Security\Core\User\UserInterface;
+ use Symfony\Component\Security\Core\User\UserProviderInterface;
++use Symfony\Component\Security\Csrf\CsrfToken;
++use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+ 
+ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+ {
+@@ -21,10 +24,13 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+ 
+     private $router;
+ 
+-    public function __construct(UserPasswordEncoderInterface $encoder, RouterInterface $router)
++    private $csrfTokenManager;
++
++    public function __construct(UserPasswordEncoderInterface $encoder, RouterInterface $router, CsrfTokenManagerInterface $csrfTokenManager)
+     {
+         $this->encoder = $encoder;
+         $this->router = $router;
++        $this->csrfTokenManager = $csrfTokenManager;
+     }
+ 
+     public function getCredentials(Request $request)
+@@ -33,6 +39,13 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+             return;
+         }
+ 
++        // optional - CSRF protection
++        $csrfToken = $request->get('_csrf_token');
++        $intention = 'authenticate'; // whatever value used in the template
++        if (false === $this->csrfTokenManager->isTokenValid(new CsrfToken($intention, $csrfToken))) {
++            throw new InvalidCsrfTokenException('Invalid CSRF token.');
++        }
++
+         $username = $request->request->get('_username');
+         $request->getSession()->set(Security::LAST_USERNAME, $username);
+         $password = $request->request->get('_password');
