@@ -1,8 +1,8 @@
 diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
-index bb2bed1..a8f459b 100644
+index 6ec902d..d8f2c61 100644
 --- a/src/AppBundle/Security/FormLoginAuthenticator.php
 +++ b/src/AppBundle/Security/FormLoginAuthenticator.php
-@@ -22,7 +22,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+@@ -29,7 +29,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
  
      public function getUser($credentials, UserProviderInterface $userProvider)
      {

@@ -1,8 +1,8 @@
 diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
-index bd0f88c..b62dd19 100644
+index 678f7a5..3cfd9e8 100644
 --- a/src/AppBundle/Security/FormLoginAuthenticator.php
 +++ b/src/AppBundle/Security/FormLoginAuthenticator.php
-@@ -72,7 +72,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+@@ -79,7 +79,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
  
      public function supportsRememberMe()
      {

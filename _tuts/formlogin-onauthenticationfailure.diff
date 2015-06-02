@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
-index d07a357..b76f296 100644
+index f37c336..a775e65 100644
 --- a/src/AppBundle/Security/FormLoginAuthenticator.php
 +++ b/src/AppBundle/Security/FormLoginAuthenticator.php
 @@ -3,8 +3,10 @@
@@ -27,7 +27,7 @@ index d07a357..b76f296 100644
      }
  
      public function getCredentials(Request $request)
-@@ -45,7 +50,9 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+@@ -52,7 +57,9 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
  
      public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
      {
