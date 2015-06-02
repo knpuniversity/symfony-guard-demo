@@ -1,0 +1,14 @@
+diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
+index b62dd19..7080533 100644
+--- a/src/AppBundle/Security/FormLoginAuthenticator.php
++++ b/src/AppBundle/Security/FormLoginAuthenticator.php
+@@ -77,6 +77,8 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+ 
+     public function start(Request $request, AuthenticationException $authException = null)
+     {
+-        // TODO: Implement start() method.
++        $url = $this->router->generate('security_login_form');
++
++        return new RedirectResponse($url);
+     }
+ }

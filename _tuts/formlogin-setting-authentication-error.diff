@@ -1,0 +1,20 @@
+diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
+index b76f296..7758a13 100644
+--- a/src/AppBundle/Security/FormLoginAuthenticator.php
++++ b/src/AppBundle/Security/FormLoginAuthenticator.php
+@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+ use Symfony\Component\Security\Core\Exception\AuthenticationException;
+ use Symfony\Component\Security\Core\Exception\BadCredentialsException;
++use Symfony\Component\Security\Core\Security;
+ use Symfony\Component\Security\Core\User\UserInterface;
+ use Symfony\Component\Security\Core\User\UserProviderInterface;
+ 
+@@ -50,6 +51,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+ 
+     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+     {
++        $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
+         $url = $this->router->generate('security_login_form');
+ 
+         return new RedirectResponse($url);

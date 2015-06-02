@@ -1,0 +1,70 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "install-require-via-composer",
+            "name": "Install: require via composer",
+            "description": null
+        },
+        {
+            "id": "formlogin-create-empty-authenticator",
+            "name": "FormLogin: Create empty authenticator",
+            "description": null
+        },
+        {
+            "id": "formlogin-getcredentials",
+            "name": "FormLogin: getCredentials()",
+            "description": null
+        },
+        {
+            "id": "formlogin-getuser",
+            "name": "FormLogin: getUser()",
+            "description": null
+        },
+        {
+            "id": "formlogin-checkcredentials",
+            "name": "FormLogin: checkCredentials()",
+            "description": null
+        },
+        {
+            "id": "formlogin-onauthenticationfailure",
+            "name": "FormLogin: onAuthenticationFailure()",
+            "description": null
+        },
+        {
+            "id": "formlogin-setting-authentication-error",
+            "name": "FormLogin: Setting authentication error",
+            "description": null
+        },
+        {
+            "id": "formlogin-onauthenticationsuccess",
+            "name": "FormLogin: onAuthenticationSuccess()",
+            "description": null
+        },
+        {
+            "id": "formlogin-supportsrememberme",
+            "name": "FormLogin: supportsRememberMe()",
+            "description": null
+        },
+        {
+            "id": "formlogin-start",
+            "name": "FormLogin: start()",
+            "description": null
+        },
+        {
+            "id": "formlogin-register-as-service",
+            "name": "FormLogin: Register as service",
+            "description": null
+        },
+        {
+            "id": "formlogin-firewall-configuration",
+            "name": "FormLogin: firewall configuration",
+            "description": null
+        }
+    ],
+    "sha": "b891e4cf253e0a2272dd7e30c7fd90c44034937c"
+}

@@ -1,0 +1,13 @@
+diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
+index bb2bed1..a8f459b 100644
+--- a/src/AppBundle/Security/FormLoginAuthenticator.php
++++ b/src/AppBundle/Security/FormLoginAuthenticator.php
+@@ -22,7 +22,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+ 
+     public function getUser($credentials, UserProviderInterface $userProvider)
+     {
+-        // TODO: Implement getUser() method.
++        return $userProvider->loadUserByUsername($credentials['username']);
+     }
+ 
+     public function checkCredentials($credentials, UserInterface $user)
