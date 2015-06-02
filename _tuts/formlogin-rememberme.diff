@@ -1,0 +1,28 @@
+diff --git a/app/Resources/views/security/login.html.twig b/app/Resources/views/security/login.html.twig
+index e970d89..8006be0 100644
+--- a/app/Resources/views/security/login.html.twig
++++ b/app/Resources/views/security/login.html.twig
+@@ -24,6 +24,9 @@
+                             <input type="password" id="password" name="_password" class="form-control" />
+                         </div>
+                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
++                        Remember me?
++                        <input type="checkbox" name="_remember_me" checked="checked" />
++                        <br/>
+                         <button type="submit" class="btn btn-primary">
+                             <i class="fa fa-sign-in"></i> Sign in
+                         </button>
+diff --git a/app/config/security.yml b/app/config/security.yml
+index 4a5f865..e49dccd 100644
+--- a/app/config/security.yml
++++ b/app/config/security.yml
+@@ -25,6 +25,9 @@ security:
+                 authenticators:
+                     - app.security.form_login_authenticator
+ 
++            remember_me:
++                key: %secret%
++
+             logout:
+                 # The route name the user can go to in order to logout
+                 path: security_logout

@@ -64,7 +64,17 @@
             "id": "formlogin-firewall-configuration",
             "name": "FormLogin: firewall configuration",
             "description": null
+        },
+        {
+            "id": "formlogin-storing-last-username",
+            "name": "FormLogin: Storing last username",
+            "description": null
+        },
+        {
+            "id": "formlogin-rememberme",
+            "name": "FormLogin: RememberMe",
+            "description": null
         }
     ],
-    "sha": "a62f82244d09348c76b92ed5e9429dc634efbf9d"
+    "sha": "3f2d78383ab259214d66ede1a7961e7bc8a7c59e"
 }

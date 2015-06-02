@@ -1,0 +1,12 @@
+diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
+index 047f0af..ea7317d 100644
+--- a/src/AppBundle/Security/FormLoginAuthenticator.php
++++ b/src/AppBundle/Security/FormLoginAuthenticator.php
+@@ -34,6 +34,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
+         }
+ 
+         $username = $request->request->get('_username');
++        $request->getSession()->set(Security::LAST_USERNAME, $username);
+         $password = $request->request->get('_password');
+ 
+         return array(
