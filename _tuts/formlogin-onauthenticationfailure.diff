@@ -1,12 +1,13 @@
 diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
-index f37c336..a775e65 100644
+index 69add27..25d151b 100644
 --- a/src/AppBundle/Security/FormLoginAuthenticator.php
 +++ b/src/AppBundle/Security/FormLoginAuthenticator.php
-@@ -3,8 +3,10 @@
+@@ -2,9 +2,11 @@
+ 
  namespace AppBundle\Security;
  
- use KnpU\GuardBundle\Guard\AbstractGuardAuthenticator;
 +use Symfony\Component\HttpFoundation\RedirectResponse;
+ use KnpU\Guard\AbstractGuardAuthenticator;
  use Symfony\Component\HttpFoundation\Request;
  use Symfony\Component\HttpFoundation\Response;
 +use Symfony\Component\Routing\RouterInterface;

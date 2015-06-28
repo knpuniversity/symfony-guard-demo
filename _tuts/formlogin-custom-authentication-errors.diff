@@ -1,15 +1,15 @@
 diff --git a/src/AppBundle/Security/FormLoginAuthenticator.php b/src/AppBundle/Security/FormLoginAuthenticator.php
-index 912010f..5e44471 100644
+index 41c8352..1134bb9 100644
 --- a/src/AppBundle/Security/FormLoginAuthenticator.php
 +++ b/src/AppBundle/Security/FormLoginAuthenticator.php
-@@ -3,6 +3,7 @@
+@@ -2,6 +2,7 @@
+ 
  namespace AppBundle\Security;
  
- use KnpU\GuardBundle\Guard\AbstractGuardAuthenticator;
-+use KnpU\GuardBundle\Security\Exception\CustomAuthenticationException;
++use KnpU\Guard\Exception\CustomAuthenticationException;
  use Symfony\Component\HttpFoundation\RedirectResponse;
+ use KnpU\Guard\AbstractGuardAuthenticator;
  use Symfony\Component\HttpFoundation\Request;
- use Symfony\Component\HttpFoundation\Response;
 @@ -50,6 +51,14 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
          $request->getSession()->set(Security::LAST_USERNAME, $username);
          $password = $request->request->get('_password');
