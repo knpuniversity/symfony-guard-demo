@@ -34,6 +34,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
         }
 
         $username = $request->request->get('_username');
+        $request->getSession()->set(Security::LAST_USERNAME, $username);
         $password = $request->request->get('_password');
 
         return array(
