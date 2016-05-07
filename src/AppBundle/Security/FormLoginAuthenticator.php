@@ -2,6 +2,7 @@
 
 namespace AppBundle\Security;
 
+use KnpU\Guard\Exception\CustomAuthenticationException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use KnpU\Guard\AbstractGuardAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,6 +51,14 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
         $request->getSession()->set(Security::LAST_USERNAME, $username);
         $password = $request->request->get('_password');
 
+        if (!$password) {
+            // totally optional - just showing off custom error messages!
+            throw CustomAuthenticationException::createWithSafeMessage(
+                // this could also be a translation key - you print this in login.html.twig
+                'You should at least *try* entering a password'
+            );
+        }
+
         return array(
             'username' => $username,
             'password' => $password
@@ -58,7 +67,19 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        return $userProvider->loadUserByUsername($credentials['username']);
+        try {
+            $user = $userProvider->loadUserByUsername($credentials['username']);
+        } catch (AuthenticationException $e) {
+            // only needed if you want to customize the error message
+            // otherwise, let loadUserByUsername() throw an exception, or return null
+            throw CustomAuthenticationException::createWithSafeMessage(
+                // this could also be a translation key - you print this in login.html.twig
+                '"%username%" is a ridiculous username',
+                array('%username%' => $credentials['username'])
+            );
+        }
+
+        return $user;
     }
 
     public function checkCredentials($credentials, UserInterface $user)
