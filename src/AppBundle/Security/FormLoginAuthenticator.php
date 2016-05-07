@@ -2,9 +2,11 @@
 
 namespace AppBundle\Security;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use KnpU\Guard\AbstractGuardAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -16,9 +18,12 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
 {
     private $encoder;
 
-    public function __construct(UserPasswordEncoderInterface $encoder)
+    private $router;
+
+    public function __construct(UserPasswordEncoderInterface $encoder, RouterInterface $router)
     {
         $this->encoder = $encoder;
+        $this->router = $router;
     }
 
     public function getCredentials(Request $request)
@@ -52,7 +57,9 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
-        // TODO: Implement onAuthenticationFailure() method.
+        $url = $this->router->generate('security_login_form');
+
+        return new RedirectResponse($url);
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
