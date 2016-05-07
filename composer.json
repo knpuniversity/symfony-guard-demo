@@ -23,7 +23,8 @@
         "symfony/monolog-bundle"               : "~2.7",
         "symfony/swiftmailer-bundle"           : "~2.3",
         "symfony/symfony"                      : "~2.7",
-        "twig/extensions"                      : "~1.2"
+        "twig/extensions"                      : "~1.2",
+        "knpuniversity/guard-bundle"           : "~0.1@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
