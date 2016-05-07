@@ -79,7 +79,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
 
     public function supportsRememberMe()
     {
-        // TODO: Implement supportsRememberMe() method.
+        return true;
     }
 
     public function start(Request $request, AuthenticationException $authException = null)
