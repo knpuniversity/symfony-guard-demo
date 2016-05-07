@@ -32,7 +32,7 @@ services:
 
     app.security.form_login_authenticator:
         class: AppBundle\Security\FormLoginAuthenticator
-        arguments: ["@security.password_encoder", "@router"]
+        arguments: ["@security.password_encoder", "@router", "@security.csrf.token_manager"]
 
     # Uncomment the following lines to define a service for the Post Doctrine repository.
     # It's not mandatory to create these services, but if you use repositories a lot,

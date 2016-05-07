@@ -11,9 +11,12 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
+use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 class FormLoginAuthenticator extends AbstractGuardAuthenticator
 {
@@ -21,16 +24,26 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
 
     private $router;
 
-    public function __construct(UserPasswordEncoderInterface $encoder, RouterInterface $router)
+    private $csrfTokenManager;
+
+    public function __construct(UserPasswordEncoderInterface $encoder, RouterInterface $router, CsrfTokenManagerInterface $csrfTokenManager)
     {
         $this->encoder = $encoder;
         $this->router = $router;
+        $this->csrfTokenManager = $csrfTokenManager;
     }
 
     public function getCredentials(Request $request)
     {
         if ($request->getPathInfo() != '/login_check' || !$request->isMethod('POST')) {
             return;
+        }
+
+        // optional - CSRF protection
+        $csrfToken = $request->get('_csrf_token');
+        $intention = 'authenticate'; // whatever value used in the template
+        if (false === $this->csrfTokenManager->isTokenValid(new CsrfToken($intention, $csrfToken))) {
+            throw new InvalidCsrfTokenException('Invalid CSRF token.');
         }
 
         $username = $request->request->get('_username');
