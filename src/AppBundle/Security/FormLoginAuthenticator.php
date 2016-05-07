@@ -66,7 +66,15 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        // TODO: Implement onAuthenticationSuccess() method.
+        // if the user hit a secure page and start() was called, this was
+        // the URL they were on, and probably where you want to redirect to
+        $targetPath = $request->getSession()->get('_security.'.$providerKey.'.target_path');
+
+        if (!$targetPath) {
+            $targetPath = $this->router->generate('homepage');
+        }
+
+        return new RedirectResponse($targetPath);
     }
 
     public function supportsRememberMe()
