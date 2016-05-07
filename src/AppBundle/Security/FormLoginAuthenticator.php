@@ -84,6 +84,8 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
 
     public function start(Request $request, AuthenticationException $authException = null)
     {
-        // TODO: Implement start() method.
+        $url = $this->router->generate('security_login_form');
+
+        return new RedirectResponse($url);
     }
 }
