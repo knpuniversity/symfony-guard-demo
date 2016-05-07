@@ -29,7 +29,7 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        // TODO: Implement getUser() method.
+        return $userProvider->loadUserByUsername($credentials['username']);
     }
 
     public function checkCredentials($credentials, UserInterface $user)
