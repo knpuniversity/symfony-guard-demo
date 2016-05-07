@@ -25,6 +25,9 @@ security:
                 authenticators:
                     - app.security.form_login_authenticator
 
+            remember_me:
+                key: %secret%
+
             logout:
                 # The route name the user can go to in order to logout
                 path: security_logout
