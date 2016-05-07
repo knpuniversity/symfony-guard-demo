@@ -14,7 +14,17 @@ class FormLoginAuthenticator extends AbstractGuardAuthenticator
 {
     public function getCredentials(Request $request)
     {
-        // TODO: Implement getCredentials() method.
+        if ($request->getPathInfo() != '/login_check' || !$request->isMethod('POST')) {
+            return;
+        }
+
+        $username = $request->request->get('_username');
+        $password = $request->request->get('_password');
+
+        return array(
+            'username' => $username,
+            'password' => $password
+        );
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
